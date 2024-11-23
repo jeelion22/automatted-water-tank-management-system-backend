@@ -3,6 +3,7 @@ const axios = require("axios");
 const cors = require("cors");
 
 const productRouter = require("./routes/productRoutes");
+const userRouter = require("./routes/userRoutes");
 
 const app = express();
 
@@ -36,5 +37,6 @@ app.get("/api", (req, res) => {
 });
 
 app.use("/api/product", productRouter);
+app.use("/api/user", userRouter);
 
 module.exports = app;
