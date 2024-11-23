@@ -13,13 +13,13 @@ const morgan = require("morgan");
 
 app.use(
   cors({
-    origin: "http://localhost:3200",
+    origin: "http://localhost:3001",
     credentials: true,
   })
 );
 
 app.use((req, res, next) => {
-  req.header("Access-Control-Allow-Origin", "http://localhost:3200");
+  req.header("Access-Control-Allow-Origin", "http://localhost:3001");
   res.header(
     "Access-Control-Allow-Headers",
     "Origin, X-Requested-With, Content-Type, Accept"
