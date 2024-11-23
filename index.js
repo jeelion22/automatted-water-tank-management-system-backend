@@ -10,7 +10,7 @@ mongoose
     console.log("Connected to MongoDB");
     // const PORT = config.SERVER_PORT || 5000;
     app.listen(3001, () => {
-      console.log(`Server running on port ${PORT}`);
+      console.log(`Server running on port 3001`);
     });
   })
   .catch((error) => console.log("Error connecting to MongoDB", error.message));
