@@ -8,5 +8,6 @@ userRouter.post("/create", userController.register);
 userRouter.post("/login", userController.login);
 
 userRouter.get("/me", auth.isAuth, userController.me);
+userRouter.get("/logout", auth.isAuth, userController.logout);
 
 module.exports = userRouter;
