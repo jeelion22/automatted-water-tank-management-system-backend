@@ -221,13 +221,15 @@ const productController = {
   generateData: async (req, res) => {
     const productID = req.body;
 
+    console.log(productID);
+
     try {
       const result = await axios.post(
         "https://eureka.innotrat.in/generate_data",
 
-        { productID }
+        productID
       );
-      res.status.json({
+      res.status(200).json({
         message: "Data generated successfully",
         data: result.data,
       });
@@ -339,10 +341,11 @@ const productController = {
     const productID = req.body;
 
     try {
-      const result = await axios.post("https://eureka.innotrat.in/get_data", {
-        productID,
-      });
-      res.status.json({
+      const result = await axios.post(
+        "https://eureka.innotrat.in/get_data",
+        productID
+      );
+      res.status(200).json({
         message: "Data generated successfully",
         data: result.data,
       });
