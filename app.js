@@ -13,13 +13,13 @@ const morgan = require("morgan");
 
 app.use(
   cors({
-    origin: "http://localhost:3001",
+    origin: "http://localhost:5173",
     credentials: true,
   })
 );
 
 app.use((req, res, next) => {
-  req.header("Access-Control-Allow-Origin", "http://localhost:3001");
+  req.header("Access-Control-Allow-Origin", "http://localhost:5173");
   res.header(
     "Access-Control-Allow-Headers",
     "Origin, X-Requested-With, Content-Type, Accept"
@@ -37,6 +37,6 @@ app.get("/api", (req, res) => {
 });
 
 app.use("/api/product", productRouter);
-app.use("/api/user", userRouter);
+// app.use("/api/user", userRouter);
 
 module.exports = app;
