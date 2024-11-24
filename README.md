@@ -30,6 +30,7 @@ The server is hosted on [Innotrat Labs](https://innotrat.com/) and [click](https
 ## Technologies Used
 
 - **express**: Web framework for Node.js.
+- **axios**: For making api calls to the innotrat server.
 - **cookie-parser**: Middleware for parsing cookies in Express.
 - **cors**: Middleware for enabling Cross-Origin Resource Sharing (CORS) in Express.
 - **morgan**: HTTP request logger middleware for Node.js.
