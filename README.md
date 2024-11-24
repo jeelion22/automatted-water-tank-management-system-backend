@@ -29,10 +29,9 @@ The server is hosted on [Innotrat Labs](https://innotrat.com/) and [click](https
 
 ## Technologies Used
 
-- **bcrypt**: Library for hashing passwords.
+- **express**: Web framework for Node.js.
 - **cookie-parser**: Middleware for parsing cookies in Express.
 - **cors**: Middleware for enabling Cross-Origin Resource Sharing (CORS) in Express.
-- **express**: Web framework for Node.js.
 - **morgan**: HTTP request logger middleware for Node.js.
 - **nodemon**: Utility for auto-restarting the server during development.
 
