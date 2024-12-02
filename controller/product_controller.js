@@ -53,8 +53,6 @@ const productController = {
         { deviceCount }
       );
 
-      console.log(result.data.addedDevices);
-
       const user = await User.findById(userId);
 
       for (const product of user.products) {
