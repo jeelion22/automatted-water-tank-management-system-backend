@@ -1,14 +1,22 @@
 const axios = require("axios");
+const User = require("../models/user");
 
 const productController = {
   createProduct: async (req, res) => {
     try {
       const product = req.body;
+      const userId = req.userId;
 
       const productStatus = await axios.post(
         "https://eureka.innotrat.in/product",
         product
       );
+
+      const user = await User.findById(userId);
+
+      user.products.push(productStatus.data);
+
+      await user.save();
 
       res.status(200).json({
         message: "Product created successfully",
@@ -33,18 +41,32 @@ const productController = {
   },
 
   createDevice: async (req, res) => {
-    const productId = req.params.productId;
-    const deviceCount = req.body.deviceCount;
-
     try {
+      const productId = req.params.productId;
+      const deviceCount = req.body.deviceCount;
+      const userId = req.userId;
+
+      console.log(productId, userId);
+
       const result = await axios.post(
         `https://eureka.innotrat.in/product/${productId}/devices`,
         { deviceCount }
       );
 
-      res
-        .status(201)
-        .json({ message: "Device(s) created successfully", data: result.data });
+      console.log(result.data.addedDevices);
+
+      const user = await User.findById(userId);
+
+      for (const product of user.products) {
+        if (product.productID === productId) {
+          product.devices.push(...result.data.addedDevices);
+          break;
+        }
+      }
+
+      await user.save();
+
+      res.status(201).json({ message: "Device(s) created successfully" });
     } catch (error) {
       console.log(error);
       if (error.response) {

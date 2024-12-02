@@ -1,10 +1,19 @@
 const express = require("express");
+const auth = require("../middleware/auth");
 const productController = require("../controller/product_controller");
 
 const productRouter = express.Router();
 
-productRouter.post("/create-product", productController.createProduct);
-productRouter.post("/:productId/create-device", productController.createDevice);
+productRouter.post(
+  "/create-product",
+  auth.isAuth,
+  productController.createProduct
+);
+productRouter.post(
+  "/:productId/create-device",
+  auth.isAuth,
+  productController.createDevice
+);
 productRouter.post("/:productId/start-device", productController.startDevice);
 productRouter.post("/:productId/stop-device", productController.stopDevice);
 productRouter.post(

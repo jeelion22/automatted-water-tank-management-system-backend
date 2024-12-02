@@ -37,6 +37,6 @@ app.get("/api", (req, res) => {
 });
 
 app.use("/api/product", productRouter);
-// app.use("/api/user", userRouter);
+app.use("/api/user", userRouter);
 
 module.exports = app;

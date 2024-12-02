@@ -1,6 +1,23 @@
 const mongoose = require("mongoose");
 const validator = require("validator");
 
+const productSchema = new mongoose.Schema({
+  name: {
+    type: String,
+    required: true,
+  },
+
+  productID: {
+    type: String,
+    required: true,
+  },
+
+  devices: {
+    type: [String],
+    default: [],
+  },
+});
+
 const userSchema = new mongoose.Schema({
   firstname: {
     type: String,
@@ -26,6 +43,7 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: [true, "Pasword required"],
   },
+  products: { type: [productSchema], default: [] },
 });
 
 userSchema.pre("save", async function (next) {
