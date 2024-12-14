@@ -64,7 +64,9 @@ const productController = {
 
       await user.save();
 
-      res.status(201).json({ message: "Device(s) created successfully" });
+      res
+        .status(201)
+        .json({ message: "Device(s) created successfully", data: result.data });
     } catch (error) {
       console.log(error);
       if (error.response) {
